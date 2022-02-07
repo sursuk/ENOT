@@ -35,6 +35,12 @@
 			border-style: solid;
 		}
 
+		.outputTable{
+        	position: absolute;
+        	top: 35%;
+        	right: 40%;
+        }
+
 		footer{
 			position: absolute;
 			bottom: 5%;
@@ -71,6 +77,7 @@
 
 <div class = "outputTable">
 			<p>DB ${out}</p>
+
 </div>
 
 <footer><h7>ENOTeam 2022</h7></footer>
