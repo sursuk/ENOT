@@ -10,20 +10,19 @@ public class DBHelper {
 
 	static ArrayList<Book> selectName(String name) throws ClassNotFoundException, SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
 
-		ArrayList<Book> bookList = new ArrayList<Book>();
+		ArrayList<Book> bookList = new ArrayList<>();
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
 			Connection connection = DriverManager.getConnection(url, usernameDB, passwordDB);
 			Statement statement = connection.createStatement();
-			//ResultSet resultSet = statement.executeQuery("SELECT * FROM books WHERE name='" + name + "'");
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM books");
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM newBooks.books WHERE name='" + name + "'");
 			while (resultSet.next()) {
 				Book book = new Book(resultSet.getInt(1), //id
 						resultSet.getString(2), //name
 						resultSet.getString(3), //tags
-						resultSet.getString(5),  //locate
-						resultSet.getString(6)); //host
+						resultSet.getString(4),  //locate
+						resultSet.getString(5)); //host
 				bookList.add(book);
 			}
 
@@ -51,7 +50,7 @@ public class DBHelper {
 			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
 			Connection connection = DriverManager.getConnection(url, usernameDB, passwordDB);
 			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE name='" + username + "' AND password='" + password + "'");
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM newBooks.users WHERE name='" + username + "' AND password='" + password + "'");
 			resultSet.first();
 			return resultSet.getInt(1);
 

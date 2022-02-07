@@ -4,30 +4,34 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class ENOT extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//подключение к БД
-		String search = (String) request.getAttribute("search");
+
 		try {
+
+			String search = request.getParameter("search");
 			request.setAttribute("out", DBHelper.selectName(search));
+
+
+
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			request.setAttribute("outEx", e);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			request.setAttribute("outEx", e);
 		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
+			request.setAttribute("outEx", e);
 		} catch (InvocationTargetException e) {
-			e.printStackTrace();
+			request.setAttribute("outEx", e);
 		} catch (InstantiationException e) {
-			e.printStackTrace();
+			request.setAttribute("outEx", e);
 		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+			request.setAttribute("outEx", e);
 		}
 
 
