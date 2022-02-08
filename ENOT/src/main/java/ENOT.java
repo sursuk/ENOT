@@ -39,12 +39,8 @@ public class ENOT extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//обработка формы авторизации
-			Integer id = DBHelper.checkAccount(request.getParameter("username"), request.getParameter("password"));
-			//if (id != null) {
-				HttpSession session = request.getSession();
-				session.setAttribute("id", id);
-			//}
+
+
 	}
 }
 

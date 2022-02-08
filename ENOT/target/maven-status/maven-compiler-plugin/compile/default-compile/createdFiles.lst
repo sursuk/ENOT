@@ -1,4 +1,6 @@
+Login.class
 ENOT.class
+Registration.class
 Book.class
 DBHelper.class
 User.class

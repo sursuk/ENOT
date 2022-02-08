@@ -8,9 +8,9 @@ public class Book {
 	private String name;
 	private String tags;
 	private String locate;
-	private String host;
+	private int host;
 
-	public Book(int id, String name, String tags, String locate, String host){
+	public Book(int id, String name, String tags, String locate, int host){
 		this.id = id;
 		this.name = name;
 		this.tags = tags;
@@ -34,7 +34,7 @@ public class Book {
 		return locate;
 	}
 
-	public String getHost() {
+	public int getHost() {
 		return host;
 	}
 
@@ -46,7 +46,7 @@ public class Book {
 		this.tags = tags;
 	}
 
-	public void setHost(String host) {
+	public void setHost(int host) {
 		this.host = host;
 	}
 

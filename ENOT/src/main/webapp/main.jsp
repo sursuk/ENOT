@@ -3,7 +3,7 @@
 
 <html>
 <head>
-	<meta charset ="UTF-8">
+	<meta charset ="utf-8">
 	<title>ENOT</title>
 	<link rel="shortcut icon" href="ENOTLogo.png" type="image/png">
 
@@ -65,19 +65,24 @@
 		</header>
 
 
+    <div class = "loginForm">
+	    <form action="Login" method="GET">
+            <input type="submit" value="вход"><br>
 
-<div class = "loginForm">
-	<form action="" method="POST">
-        <input type="text" name="username" placeholder="username"><br><br>
-		<input type="password" name="password" placeholder="password"><br><br>
-        <input type="submit" value="login"><br>
-    </form>
-		<input type="button">
-</div>
-
+	    </form>
+	    <form action="Registration" method = "GET">
+	        <input type="submit" value="регистрация">
+	    </form>
+    </div>
+</c:if>
+        <p>${out}</p>
+        <p>EX: ${outEX}</p>
 <div class = "outputTable">
-			<p>DB ${out}</p>
-
+<%= session.getValue("id") %>
+    <c:forEach var="out" items="${out}" default="Ничего не найдено">
+        <p>${out}</p>
+        <p>${outEX}</p>
+    </c:forEach>
 </div>
 
 <footer><h7>ENOTeam 2022</h7></footer>

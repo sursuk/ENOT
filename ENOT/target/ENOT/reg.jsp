@@ -1,4 +1,4 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored ="false" %>
 
 <html>
@@ -56,33 +56,20 @@
 	<body>
 		<header>
 			<h2>ENOT</h2>
-			<div class = "inputStr">
-    <form action="ENOT" method="GET">
-        <input type="text" name="search" placeholder=<%= request.getParameter("search") %>>
-        <input type="submit" value="search">
-    </form>
-</div>
+
 		</header>
 
-
     <div class = "loginForm">
-	    <form action="Login" method="GET">
-            <input type="submit" value="вход"><br>
-
-	    </form>
-	    <form action="Registration" method = "GET">
-	        <input type="submit" value="регистрация">
+	    <form action="Registration" method="POST">
+            <input type="text" name="username" placeholder="username"><br><br>
+		    <input type="password" name="password" placeholder="password"><br><br>
+		    <input type="submit" value="регистрация">
 	    </form>
     </div>
-</c:if>
+
         <p>${out}</p>
         <p>EX: ${outEX}</p>
-<div class = "outputTable">
-<%= session.getValue("id") %>
-    <c:forEach var="out" items="${out}" default="Ничего не найдено">
-        <p>${out}</p>
-        <p>${outEX}</p>
-    </c:forEach>
+
 </div>
 
 <footer><h7>ENOTeam 2022</h7></footer>
