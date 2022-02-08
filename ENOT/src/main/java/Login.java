@@ -20,32 +20,8 @@ public class Login extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//обработка формы авторизации
-		//Integer id = DBHelper.checkAccount(request.getParameter("username"), request.getParameter("password"));
-		//if (id != null) {
-		int id = -10;
 
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-			Connection connection = DriverManager.getConnection(DBHelper.url, DBHelper.usernameDB, DBHelper.passwordDB);
-			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM newBooks.users WHERE name='" + request.getParameter("username") + "' AND password='" + request.getParameter("password") + "'");
-			resultSet.next();
-			id =  resultSet.getInt(1);
-
-		} catch (InstantiationException e) {
-			request.setAttribute("outEx", e);
-		} catch (IllegalAccessException e) {
-			request.setAttribute("outEx", e);
-		} catch (InvocationTargetException e) {
-			request.setAttribute("outEx", e);
-		} catch (NoSuchMethodException e) {
-			request.setAttribute("outEx", e);
-		} catch (ClassNotFoundException e) {
-			request.setAttribute("outEx", e);
-		} catch (SQLException e) {
-			request.setAttribute("outEx", e);
-		}
-
+		int id = DBHelper.checkAccount(request.getParameter("username"), request.getParameter("password"));
 
 		HttpSession session = request.getSession();
 		session.setAttribute("id", id);

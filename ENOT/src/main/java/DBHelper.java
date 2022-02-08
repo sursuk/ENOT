@@ -95,13 +95,14 @@ public class DBHelper {
 	//работа с Юзерами
 	//**************************************************************
 	static  Integer checkAccount(String username, String password) {
+		int id = -10;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
 			Connection connection = DriverManager.getConnection(url, usernameDB, passwordDB);
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM newBooks.users WHERE name='" + username + "' AND password='" + password + "'");
 			resultSet.next();
-			return resultSet.getInt(1);
+			id = resultSet.getInt(1);
 
 		} catch (InstantiationException e) {
 			return -1;
@@ -116,5 +117,6 @@ public class DBHelper {
 		} catch (SQLException e) {
 			return -6;
 		}
+		return id;
 	}
 }
