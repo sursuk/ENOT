@@ -119,4 +119,34 @@ public class DBHelper {
 		}
 		return id;
 	}
+
+	static Integer addUser(String username, String password){
+		int id;
+		String sql = "INSERT INTO newBooks.users (name, password) VALUES (?, ?)";
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+			Connection connection = DriverManager.getConnection(url, usernameDB, passwordDB);
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
+			preparedStatement.executeUpdate();
+
+			id = checkAccount(username, password);
+
+		} catch (InstantiationException e) {
+			return -1;
+		} catch (IllegalAccessException e) {
+			return -2;
+		} catch (InvocationTargetException e) {
+			return -3;
+		} catch (NoSuchMethodException e) {
+			return -4;
+		} catch (ClassNotFoundException e) {
+			return -5;
+		} catch (SQLException e) {
+			return -6;
+		}
+		return id;
+	}
 }
