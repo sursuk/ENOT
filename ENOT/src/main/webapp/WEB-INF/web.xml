@@ -8,13 +8,21 @@
 http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
     <display-name>Archetype Created Web Application</display-name>
 
+    <context-param>
+        <description>Location to store uploaded file</description>
+        <param-name>file-upload</param-name>
+        <param-value>
+            \home\sursuk\Desktop\apache-tomcat-9.0.58\webapps\data\
+        </param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>ENOT</servlet-name>
         <servlet-class>ENOT</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ENOT</servlet-name>
-        <url-pattern>/ENOT</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -24,6 +32,24 @@ http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Registration</servlet-name>
+        <servlet-class>Registration</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Registration</servlet-name>
+        <url-pattern>/Registration</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addFile</servlet-name>
+        <servlet-class>addFile</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addFile</servlet-name>
+        <url-pattern>/addFile</url-pattern>
     </servlet-mapping>
 
 </web-app>

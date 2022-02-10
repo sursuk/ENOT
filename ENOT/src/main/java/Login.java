@@ -25,8 +25,8 @@ public class Login extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("id", id);
-		request.setAttribute("out", id);
-		//}
+		session.setAttribute("userName", DBHelper.returnUser(id).getName());
+
 		if(id == -10){
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}

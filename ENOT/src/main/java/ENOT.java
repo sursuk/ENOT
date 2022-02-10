@@ -13,12 +13,20 @@ public class ENOT extends HttpServlet {
 			throws ServletException, IOException {
 		//подключение к БД
 
+		User user = null;
+
 		try {
+
+			HttpSession session = request.getSession();
 
 			String search = request.getParameter("search");
 			request.setAttribute("out", DBHelper.selectName(search));
-
-
+			if(session.getAttribute("id") != null) {
+				user = DBHelper.returnUser((Integer) session.getAttribute("id"));
+			}
+			if(user != null) {
+				request.setAttribute("outUser", user.getName());
+			}
 
 		} catch (ClassNotFoundException e) {
 			request.setAttribute("outEx", e);
@@ -39,7 +47,6 @@ public class ENOT extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
 	}
 }

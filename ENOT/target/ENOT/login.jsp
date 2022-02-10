@@ -65,11 +65,10 @@
 		    <input type="password" name="password" placeholder="password"><br><br>
 		    <input type="submit" value="LOGIN">
 	    </form>
+	    <form action="Registration" method="GET">
+	        <input type="submit" value="REGISTRATION">
+	    </form>
     </div>
-
-        <p>${out}</p>
-        <p>EX: ${outEX}</p>
-
 </div>
 
 <footer><h7>ENOTeam 2022</h7></footer>

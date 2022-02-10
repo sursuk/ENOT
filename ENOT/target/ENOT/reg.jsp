@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ page isELIgnored ="false" %>
 
 <html>
@@ -29,8 +29,8 @@
 
 		.loginForm{
 			position: absolute;
-			top: 5%;
-			right: 10%;
+			top: 35%;
+			left: 42%;
 			border-color: red;
 			border-style: solid;
 		}
@@ -59,13 +59,16 @@
 
 		</header>
 
-    <div class = "loginForm">
-	    <form action="Registration" method="POST">
-            <input type="text" name="username" placeholder="username"><br><br>
-		    <input type="password" name="password" placeholder="password"><br><br>
-		    <input type="submit" value="регистрация">
-	    </form>
-    </div>
+        <div class = "loginForm">
+    	    <form action="Registration" method="POST">
+                <input type="text" name="username" placeholder="username"><br><br>
+    		    <input type="password" name="password" placeholder="password"><br><br>
+    		    <input type="submit" value="REGISTRATION">
+    	    </form>
+    	    <form action="Login" method="GET">
+    	        <input type="submit" value="LOGIN">
+    	    </form>
+        </div>
 
         <p>${out}</p>
         <p>EX: ${outEX}</p>

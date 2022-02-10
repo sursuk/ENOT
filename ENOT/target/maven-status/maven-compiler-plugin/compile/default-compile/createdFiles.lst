@@ -1,6 +1,7 @@
 Login.class
+DBHelper.class
+User.class
+addFile.class
 ENOT.class
 Registration.class
 Book.class
-DBHelper.class
-User.class

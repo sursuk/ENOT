@@ -1,5 +1,8 @@
 
+
 <%@ page isELIgnored ="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 
 <html>
 <head>
@@ -58,7 +61,12 @@
 			<h2>ENOT</h2>
 			<div class = "inputStr">
     <form action="ENOT" method="GET">
-        <input type="text" name="search" placeholder=<%= request.getParameter("search") %>>
+        <input type="text" name="search" size="50" placeholder=<%= request.getParameter("search") %>>
+		<input type = "radio" id="name" name="from" value = "name"> <label for="name">name</label>
+		<input type = "radio" id="author" name="from" value = "author"> <label for="author">author</label>
+		<input type = "radio" id="tags" name="from" value = "tags"> <label for="tags">tags</label>
+		<input type = "radio" id="year" name="from" value = "year"> <label for="year">year</label>
+		<br>
         <input type="submit" value="search">
     </form>
 </div>
@@ -66,20 +74,23 @@
 
 
     <div class = "loginForm">
-	    <form action="Login" method="GET">
-            <input type="submit" value="вход"><br>
+    <p>${outUser}</p>
+     <form action="addFile" method="GET">
+                <input type="submit" value="ADD FILE"><br>
+   	    </form>
 
+	    <form action="Login" method="GET">
+            <input type="submit" value="LOGIN"><br>
 	    </form>
-	    <form action="Registration" method = "GET">
-	        <input type="submit" value="регистрация">
+	    <form action="Registration" method="GET">
+	        <input type="submit" value="REGISTRATION">
 	    </form>
     </div>
-</c:if>
-        <p>${out}</p>
-        <p>EX: ${outEX}</p>
+
 <div class = "outputTable">
-<%= session.getValue("id") %>
-    <c:forEach var="out" items="${out}" default="Ничего не найдено">
+<%= session.getValue("userName") %>
+
+	<c:forEach var="out" items="${out}" >
         <p>${out}</p>
         <p>${outEX}</p>
     </c:forEach>
