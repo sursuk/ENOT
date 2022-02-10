@@ -47,7 +47,7 @@
 		footer{
 			position: absolute;
 			bottom: 5%;
-			left: 45%;
+			left: 5%;
 			border-color: grey;
 			border-style: solid;
 		}
@@ -66,6 +66,7 @@
 		<input type = "radio" id="author" name="from" value = "author"> <label for="author">author</label>
 		<input type = "radio" id="tags" name="from" value = "tags"> <label for="tags">tags</label>
 		<input type = "radio" id="year" name="from" value = "year"> <label for="year">year</label>
+   <c:if test = "${outUser!= null}">		<input type = "radio" id="private" name="private" value = "private"> <label for="private">private</label> </c:if>
 		<br>
         <input type="submit" value="search">
     </form>
@@ -74,10 +75,12 @@
 
 
     <div class = "loginForm">
-    <p>${outUser}</p>
+    <c:if test = "${outUser!= null}">
+	<p>${outUser}</p>
      <form action="addFile" method="GET">
                 <input type="submit" value="ADD FILE"><br>
    	    </form>
+	</c:if>
 
 	    <form action="Login" method="GET">
             <input type="submit" value="LOGIN"><br>
@@ -88,11 +91,15 @@
     </div>
 
 <div class = "outputTable">
-<%= session.getValue("userName") %>
 
 	<c:forEach var="out" items="${out}" >
-        <p>${out}</p>
-        <p>${outEX}</p>
+        <p>${out}
+        <c:if test = "${outUser!= null}">
+            <form action="Download" method="GET">
+                <input type="hidden" name="name" value="${out.name}">
+                <input type="submit" value="DOWNLOAD"><br> </p>
+            </form>
+        </c:if>
     </c:forEach>
 </div>
 

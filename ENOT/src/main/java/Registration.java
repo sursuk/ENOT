@@ -64,6 +64,6 @@ public class Registration extends HttpServlet {
 	//		request.getRequestDispatcher("reg.jsp").forward(request, response);
 	//	}
 	//	else
-			request.getRequestDispatcher("main.jsp").forward(request, response);
+			request.getRequestDispatcher("/ENOT").forward(request, response);
 	}
 }

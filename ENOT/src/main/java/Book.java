@@ -5,7 +5,7 @@
 public class Book {
 
 	private int id;
-	private String name;
+	public String name;
 	private String tags;
 	private String locate;
 	private int host;
@@ -69,6 +69,6 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "id=" + id + "  name='" + name  + "  tags='" + tags + "  host='" + host + "\n";
+		return "| name: " + name  + " | author: " + author + " | year: " + year + " | tags: " + tags + " |  host=" + host;
 	}
 }

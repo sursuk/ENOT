@@ -8,17 +8,191 @@ public class DBHelper {
 	static String usernameDB = "root";
 	static String passwordDB = "12345678";
 
-	static ArrayList<Book> selectName(String name) throws ClassNotFoundException, SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+	static ArrayList<Book> selectName(String name, boolean priv, Object id) throws ClassNotFoundException, SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
 
 		String sql;
 		ArrayList<Book> bookList = new ArrayList<>();
 
-		if(name.equals("") || name.equals(" ")){
-			sql = "SELECT * FROM newBooks.books";
+		if(priv) {
+			if (name.equals("") || name.equals(" ")) {
+				sql = "SELECT * FROM newBooks.books WHERE id='" + id + "'";
+			} else {
+				sql = "SELECT * FROM newBooks.books WHERE name='" + name + "' AND id='" + id + "'";
+			}
 		}
-			else {
-			sql = "SELECT * FROM newBooks.books WHERE name='" + name + "'";
+		else{
+			if (name.equals("") || name.equals(" ")) {
+				sql = "SELECT * FROM newBooks.books";
+			} else {
+				sql = "SELECT * FROM newBooks.books WHERE name='" + name + "'";
+			}
 		}
+
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+			Connection connection = DriverManager.getConnection(url, usernameDB, passwordDB);
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(sql);
+			while (resultSet.next()) {
+				Book book = new Book(resultSet.getInt(1), //id
+						resultSet.getString(2), //name
+						resultSet.getString(3), //tags
+						resultSet.getString(4),  //locate
+						resultSet.getInt(5),  //host
+						resultSet.getInt(6),  //year
+						resultSet.getString(7)); //author
+				bookList.add(book);
+			}
+
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+
+
+		return bookList;
+	}
+
+	static ArrayList<Book> selectAuthor(String author, boolean priv, Object id) throws ClassNotFoundException, SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+
+		String sql;
+		ArrayList<Book> bookList = new ArrayList<>();
+
+		if(priv) {
+			if (author.equals("") || author.equals(" ")) {
+				sql = "SELECT * FROM newBooks.books WHERE id='" + id + "'";
+			} else {
+				sql = "SELECT * FROM newBooks.books WHERE author='" + author + "' AND id='" + id + "'";
+			}
+		}
+		else{
+			if (author.equals("") || author.equals(" ")) {
+				sql = "SELECT * FROM newBooks.books";
+			} else {
+				sql = "SELECT * FROM newBooks.books WHERE author='" + author + "'";
+			}
+		}
+
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+			Connection connection = DriverManager.getConnection(url, usernameDB, passwordDB);
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(sql);
+			while (resultSet.next()) {
+				Book book = new Book(resultSet.getInt(1), //id
+						resultSet.getString(2), //name
+						resultSet.getString(3), //tags
+						resultSet.getString(4),  //locate
+						resultSet.getInt(5),  //host
+						resultSet.getInt(6),  //year
+						resultSet.getString(7)); //author
+				bookList.add(book);
+			}
+
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+
+
+		return bookList;
+	}
+
+	static ArrayList<Book> selectTags(String tags, boolean priv, Object id) throws ClassNotFoundException, SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+
+		String sql;
+		ArrayList<Book> bookList = new ArrayList<>();
+
+		if(priv) {
+			if (tags.equals("") || tags.equals(" ")) {
+				sql = "SELECT * FROM newBooks.books WHERE id='" + id + "'";
+			} else {
+				sql = "SELECT * FROM newBooks.books WHERE tags='" + tags + "' AND id='" + id + "'";
+			}
+		}
+		else{
+			if (tags.equals("") || tags.equals(" ")) {
+				sql = "SELECT * FROM newBooks.books";
+			} else {
+				sql = "SELECT * FROM newBooks.books WHERE tags='" + tags + "'";
+			}
+		}
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+			Connection connection = DriverManager.getConnection(url, usernameDB, passwordDB);
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(sql);
+			while (resultSet.next()) {
+				Book book = new Book(resultSet.getInt(1), //id
+						resultSet.getString(2), //name
+						resultSet.getString(3), //tags
+						resultSet.getString(4),  //locate
+						resultSet.getInt(5),  //host
+						resultSet.getInt(6),  //year
+						resultSet.getString(7)); //author
+				bookList.add(book);
+			}
+
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+
+
+		return bookList;
+	}
+
+	static ArrayList<Book> selectYear(int year, boolean priv, Object id) throws ClassNotFoundException, SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+
+		String sql;
+		ArrayList<Book> bookList = new ArrayList<>();
+
+		if(priv) {
+			sql = "SELECT * FROM newBooks.books WHERE year='" + year + "' AND id='" + id + "'";
+		}
+		else {
+
+			sql = "SELECT * FROM newBooks.books WHERE year='" + year + "'";
+
+		}
+
+
+
+
+
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
 			Connection connection = DriverManager.getConnection(url, usernameDB, passwordDB);
@@ -124,7 +298,7 @@ public class DBHelper {
 		return id;
 	}
 
-	static User returnUser(int id){
+	static User returnUser(Object id){
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();

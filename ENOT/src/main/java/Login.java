@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.sql.*;
 
 public class Login extends HttpServlet {
 
@@ -31,6 +29,6 @@ public class Login extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 		else
-			request.getRequestDispatcher("main.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/ENOT");
 	}
 }

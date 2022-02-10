@@ -52,4 +52,13 @@ http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.
         <url-pattern>/addFile</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Download</servlet-name>
+        <servlet-class>Download</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Download</servlet-name>
+        <url-pattern>/Download</url-pattern>
+    </servlet-mapping>
+
 </web-app>

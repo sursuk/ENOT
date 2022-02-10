@@ -5,7 +5,6 @@ import javax.servlet.http.*;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
-import java.util.ArrayList;
 
 public class ENOT extends HttpServlet {
 
@@ -20,9 +19,36 @@ public class ENOT extends HttpServlet {
 			HttpSession session = request.getSession();
 
 			String search = request.getParameter("search");
-			request.setAttribute("out", DBHelper.selectName(search));
+			String from = request.getParameter("from");
+			Boolean priv = true;
+			int id;
+
+			if(session.getAttribute("id") != null){
+				id = (int) session.getAttribute("id");
+			}
+			else id = 0;
+
+			if(request.getParameter("private") == null) {
+				priv = false;
+			}
+
+			if(from == null){
+				from = "name";
+			}
+			if(search == null){
+				search = "";
+			}
+
+			switch (from){
+				case "name": request.setAttribute("out", DBHelper.selectName(search, priv, id)); break;
+				case "author": request.setAttribute("out", DBHelper.selectAuthor(search, priv, id)); break;
+				case "tags": request.setAttribute("out", DBHelper.selectTags(search, priv, id)); break;
+				case "year": request.setAttribute("out", DBHelper.selectYear(Integer.parseInt(search), priv, id)); break;
+				default: request.setAttribute("out", DBHelper.selectName(search, priv, id)); break;
+			}
+
 			if(session.getAttribute("id") != null) {
-				user = DBHelper.returnUser((Integer) session.getAttribute("id"));
+				user = DBHelper.returnUser(id);
 			}
 			if(user != null) {
 				request.setAttribute("outUser", user.getName());
