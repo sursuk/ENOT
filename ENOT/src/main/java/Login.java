@@ -29,6 +29,6 @@ public class Login extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 		else
-			response.sendRedirect(request.getContextPath() + "/ENOT");
+			request.getRequestDispatcher("main.jsp").forward(request, response);
 	}
 }

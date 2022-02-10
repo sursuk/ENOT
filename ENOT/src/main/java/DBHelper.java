@@ -15,9 +15,9 @@ public class DBHelper {
 
 		if(priv) {
 			if (name.equals("") || name.equals(" ")) {
-				sql = "SELECT * FROM newBooks.books WHERE id='" + id + "'";
+				sql = "SELECT * FROM newBooks.books WHERE hostName='" + id + "'";
 			} else {
-				sql = "SELECT * FROM newBooks.books WHERE name='" + name + "' AND id='" + id + "'";
+				sql = "SELECT * FROM newBooks.books WHERE name='" + name + "' AND hostName='" + id + "'";
 			}
 		}
 		else{
@@ -71,9 +71,9 @@ public class DBHelper {
 
 		if(priv) {
 			if (author.equals("") || author.equals(" ")) {
-				sql = "SELECT * FROM newBooks.books WHERE id='" + id + "'";
+				sql = "SELECT * FROM newBooks.books WHERE hostName='" + id + "'";
 			} else {
-				sql = "SELECT * FROM newBooks.books WHERE author='" + author + "' AND id='" + id + "'";
+				sql = "SELECT * FROM newBooks.books WHERE author='" + author + "' AND hostName='" + id + "'";
 			}
 		}
 		else{
@@ -127,9 +127,9 @@ public class DBHelper {
 
 		if(priv) {
 			if (tags.equals("") || tags.equals(" ")) {
-				sql = "SELECT * FROM newBooks.books WHERE id='" + id + "'";
+				sql = "SELECT * FROM newBooks.books WHERE hostName='" + id + "'";
 			} else {
-				sql = "SELECT * FROM newBooks.books WHERE tags='" + tags + "' AND id='" + id + "'";
+				sql = "SELECT * FROM newBooks.books WHERE tags='" + tags + "' AND hostName='" + id + "'";
 			}
 		}
 		else{
@@ -181,7 +181,7 @@ public class DBHelper {
 		ArrayList<Book> bookList = new ArrayList<>();
 
 		if(priv) {
-			sql = "SELECT * FROM newBooks.books WHERE year='" + year + "' AND id='" + id + "'";
+			sql = "SELECT * FROM newBooks.books WHERE year='" + year + "' AND hostName='" + id + "'";
 		}
 		else {
 

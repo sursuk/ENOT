@@ -20,7 +20,7 @@ public class ENOT extends HttpServlet {
 
 			String search = request.getParameter("search");
 			String from = request.getParameter("from");
-			Boolean priv = true;
+			Boolean priv = false;
 			int id;
 
 			if(session.getAttribute("id") != null){
@@ -28,8 +28,10 @@ public class ENOT extends HttpServlet {
 			}
 			else id = 0;
 
-			if(request.getParameter("private") == null) {
-				priv = false;
+			if(request.getParameter("private") != null) {
+				if (request.getParameter("private").equals("private")) {
+					priv = true;
+				}
 			}
 
 			if(from == null){
