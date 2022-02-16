@@ -58,17 +58,6 @@
 </div>
 		</header>
 
-
-
-<div class = "loginForm">
-	<form action="" method="POST">
-        <input type="text" name="username" placeholder="username"><br><br>
-		<input type="password" name="password" placeholder="password"><br><br>
-        <input type="submit" value="вход"><br>
-		<input type="button" value="регистрация">
-	</form>
-</div>
-
 <footer><h7>ENOTeam 2022</h7></footer>
 
 </body>
