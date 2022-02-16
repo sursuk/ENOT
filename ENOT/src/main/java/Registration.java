@@ -42,7 +42,7 @@ public class Registration extends HttpServlet {
 			preparedStatement.executeUpdate();
 
 			id = DBHelper.checkAccount(username, password);
-			request.setAttribute("out", id);
+		//	request.setAttribute("out", id);
 
 		} catch (InstantiationException e) {
 			request.setAttribute("out", e);
